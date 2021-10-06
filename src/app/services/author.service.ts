@@ -7,7 +7,7 @@ import {catchError, map, retry} from "rxjs/operators";
 
 @Injectable()
 export class AuthorService extends BaseService<Author> {
-  protected path = "lang";
+  protected path = "author";
 
   constructor(http: HttpClient) {
     super(http);

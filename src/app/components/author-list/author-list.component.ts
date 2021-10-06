@@ -40,7 +40,7 @@ export class AuthorListComponent implements OnInit {
     this.service.getMany(this.httpParams).subscribe(
       responce => {
         this.authors = this.authors?.concat(responce);
-        this.httpParams = this.httpParams.set("page", ++this.currPage);
+        this.httpParams = this.httpParams.set("pageNumber", ++this.currPage);
         this.loadingState = false;
       },
       error => {
@@ -52,15 +52,15 @@ export class AuthorListComponent implements OnInit {
 
   private setHttpParams(params: ParamMap) {
     var paramsObject: { [key: string]: any } = {
-      page: this.currPage,
+      pageNumber: this.currPage,
       pageSize: 20
     };
 
     if (params.get('sortOption')) {
-      paramsObject.sortOption = params.get('sortOption');
+      paramsObject.sortOption = 1;
     }
     else {
-      paramsObject.sortOption = "abc";
+      paramsObject.sortOption = 0; //"abc";
     }
 
     this.httpParams = new HttpParams({
