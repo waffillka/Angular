@@ -1,1 +1,36 @@
-<p>navbar works!</p>
+<nav class="navigation-sticky">
+  <div class="container-fluid">
+    <div class="navigation">
+      <div class="navigation__logo">
+        <a routerLink="/"><img height="100%" src="assets/bookcrossing-logo.png" title="Bookcrossing" alt="logo"></a>
+      </div>
+      <div class="collapse-button">
+        <button class="btn btn-outline-dark" [ngClass]="{ 'active' : isExpanded }" (click)="toggle()">
+          Меню
+        </button>
+      </div>
+      <div class="container-fluid row collapse-target" [ngClass]="{ 'collapse-target_show' : isExpanded }">
+        <div class="col-lg-6">
+          <div class="navigation__group">
+            <a class="group__item link link-nav" title="Перейти на главную" routerLink="/feed"
+               routerLinkActive="link-nav_active">Главная</a>
+            <a class="group__item link link-nav" title="Перейти к языкам программирования"
+               routerLink="/langs" routerLinkActive="link-nav_active">Языки
+              программирования</a>
+            <a class="group__item link link-nav" title="Перейти к тегам" routerLink="/tags"
+               routerLinkActive="link-nav_active">Теги</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="navigation__group navigation__group_side">
+            <a class="group__item btn btn-outline-dark" title="Написать и опубликовать новую запись"
+               routerLink="/edit">Новая запись</a>
+            <a class="group__item btn btn-outline-dark" title="Перейти к странице поиска"
+               routerLink="/search">Поиск</a>
+            <a class="btn btn-dark" title="Перейти к профилю" routerLink="/profile">Профиль</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
