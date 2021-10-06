@@ -35,13 +35,6 @@ export class BookService extends BaseService<Book> {
     );
   }
 
-  public owner(bookId: string) {
-    return this.http.get<boolean>(`${this.url}/is-owner/${bookId}`).pipe(
-      retry(3),
-      catchError(this.HandleError)
-    );
-  }
-
   public delete(bookId: string) {
     return this.http.delete(`${this.url}/${this.path}/delete/${bookId}`).pipe(
       retry(3),
@@ -49,17 +42,4 @@ export class BookService extends BaseService<Book> {
     );
   }
 
-  public like(bookId:string) {
-    return this.http.post(`${this.url}/like-snippet/${bookId}`, "null").pipe(
-      retry(3),
-      catchError(this.HandleError)
-    );
-  }
-
-  public getLike(bookId:string) {
-    return this.http.get<boolean>(`${this.url}/liked-by/${bookId}`).pipe(
-      retry(3),
-      catchError(this.HandleError)
-    );
-  }
 }
