@@ -5,11 +5,13 @@ import { AppComponent } from './components/app/app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.Module";
+import { AuthorComponent } from './components/author/author.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,
