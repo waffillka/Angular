@@ -9,6 +9,10 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
 import { AuthorsComponent } from './components/authors/authors.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { BookComponent } from './components/book/book.component';
+import { BooksListComponent } from './components/books-list/books-list.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { HomeComponent } from './components/home/home.component';
     AuthorListComponent,
     AuthorsComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    BookComponent,
+    BooksListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
