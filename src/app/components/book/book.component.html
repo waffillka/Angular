@@ -1,1 +1,38 @@
-<p>book works!</p>
+<div *ngIf="book" class="p-2 m-2 bg-white rounded">
+  <div class="d-flex flex-row">
+    <div class="m-2">
+      <a class="link" title='Перейти к паблишеру "{{book.publisher.name}}"'
+         [routerLink]="['/langs', book.publisher.id]">
+        {{book.publisher.name}}
+      </a>
+    </div>
+    <div class="m-2 text">
+      {{book.owner.nickname}}
+    </div>
+  </div>
+  <div class="m-2">
+    <h3>{{book.Name}}</h3>
+    <p>{{book.description}}</p>
+  </div>
+  <div class="d-flex flex-row flex-wrap overflow-hidden">
+    <a class="link m-1 p-1" *ngFor="let author of book.authors" title='Перейти к автроту "{{author.name}}"'
+       [routerLink]="['/author', author.id]">
+      {{author.name}}
+    </a>
+  </div>
+</div>
+
+<div *ngIf="errorMessage" class="p-2 m-2 bg-white rounded">
+  <p class="text-danger">
+    {{errorMessage}}
+  </p>
+  <button class="btn" (click)="getSnippet()">
+    Обновить
+  </button>
+</div>
+
+<div *ngIf="!book && !errorMessage" class="d-flex flex-column align-items-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
