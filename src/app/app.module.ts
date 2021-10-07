@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { BookComponent } from './components/book/book.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
+import { FeedAuthorComponent } from './components/feed-author/feed-author.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BooksListComponent } from './components/books-list/books-list.component
     NotFoundComponent,
     HomeComponent,
     BookComponent,
-    BooksListComponent
+    BooksListComponent,
+    FeedAuthorComponent
   ],
   imports: [
     BrowserModule,
