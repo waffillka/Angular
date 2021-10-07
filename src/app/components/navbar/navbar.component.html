@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navigation">
       <div class="navigation__logo">
-        <a routerLink="/"><img height="100%" src="assets/bookcrossing-logo.png" title="Bookcrossing" alt="logo"></a>
+        <a routerLink="/home"><img height="100%" src="assets/bookcrossing-logo.png" title="Bookcrossing" alt="logo"></a>
       </div>
       <div class="collapse-button">
         <button class="btn btn-outline-dark" [ngClass]="{ 'active' : isExpanded }" (click)="toggle()">
@@ -15,9 +15,8 @@
             <a class="group__item link link-nav" title="Перейти на главную" routerLink="/home"
                routerLinkActive="link-nav_active">Главная</a>
             <a class="group__item link link-nav" title="Перейти к языкам программирования"
-               routerLink="/langs" routerLinkActive="link-nav_active">Языки
-              программирования</a>
-            <a class="group__item link link-nav" title="Перейти к тегам" routerLink="/tags"
+               routerLink="/authors" routerLinkActive="link-nav_active">Авторы</a>
+            <a class="group__item link link-nav" title="Перейти к тегам" routerLink="/authors/:OrderBy"
                routerLinkActive="link-nav_active">Теги</a>
           </div>
         </div>

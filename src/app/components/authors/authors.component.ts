@@ -13,11 +13,11 @@ export class AuthorsComponent {
   constructor(private route: ActivatedRoute) {
     this.links = [
       {
-        optionLink: "/langs/sort/popular",
+        optionLink: "/author/search?OrderBy=0",
         optionName: "Популярные"
       },
       {
-        optionLink: "/langs/sort/abc",
+        optionLink: "/author/search?OrderBy=1",
         optionName: "По алфавиту"
       }
     ];
