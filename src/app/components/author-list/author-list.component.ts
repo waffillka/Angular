@@ -27,7 +27,6 @@ export class AuthorListComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.authors = [];
-      this.currPage = 1;
       this.setHttpParams(params);
       this.getAuthors();
     });
@@ -40,8 +39,9 @@ export class AuthorListComponent implements OnInit {
     this.service.getMany(this.httpParams).subscribe(
       responce => {
         this.authors = this.authors?.concat(responce);
-        this.currPage++;
-        this.httpParams.set("PageNumber", this.currPage);
+        this.httpParams = this.httpParams.set("PageNumber", this.currPage);
+        if (responce.length != 0)
+          this.currPage += 1;
         this.loadingState = false;
       },
       error => {
@@ -53,7 +53,7 @@ export class AuthorListComponent implements OnInit {
 
   private setHttpParams(params: ParamMap) {
     var paramsObject: { [key: string]: any } = {
-      PageNumber: this.currPage,
+      PageNumber: 1,
       PageSize: 20
     };
 
