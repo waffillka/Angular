@@ -23,11 +23,11 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.bookId = params.get("bookId")!;
-      this.getSnippet();
+      this.getBook();
     });
   }
 
-  public getSnippet() {
+  public getBook() {
     this.errorMessage = undefined;
 
     this.service.get(this.bookId!).subscribe(
