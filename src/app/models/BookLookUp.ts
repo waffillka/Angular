@@ -1,4 +1,4 @@
-import {Publisher} from "./Publisher";S
+import {Publisher} from "./Publisher";
 import {Author} from "./Author";
 
 export interface BookLookUp {
