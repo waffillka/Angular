@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { BookComponent } from './components/book/book.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { FeedAuthorComponent } from './components/feed-author/feed-author.component';
+import { FeedBookComponent } from './components/feed-book/feed-book.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FeedAuthorComponent } from './components/feed-author/feed-author.compon
     HomeComponent,
     BookComponent,
     BooksListComponent,
-    FeedAuthorComponent
+    FeedAuthorComponent,
+    FeedBookComponent
   ],
   imports: [
     BrowserModule,
