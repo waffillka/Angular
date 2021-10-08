@@ -6,7 +6,7 @@ import {catchError, retry} from "rxjs/operators";
 
 @Injectable()
 export class BookService extends BaseService<Book> {
-  protected path = "book";
+  protected path = "books";
 
   constructor(http: HttpClient) {
     super(http);
