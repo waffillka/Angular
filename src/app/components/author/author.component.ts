@@ -12,5 +12,4 @@ export class AuthorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
