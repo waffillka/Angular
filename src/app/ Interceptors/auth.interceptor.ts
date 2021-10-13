@@ -6,9 +6,7 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthRedirectInterceptor implements HttpInterceptor {
-  constructor(
-    public authService: OAuthService,
-  ) {}
+  constructor( public authService: OAuthService ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)

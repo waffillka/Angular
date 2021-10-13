@@ -22,6 +22,7 @@ import {authConfig} from "./Config/AuthConfig";
 import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 import {environment} from "../environments/environment";
 import {AuthRedirectInterceptor} from "./ Interceptors/auth.interceptor";
+import {AuthHeadersInterceptor} from "./ Interceptors/auth.headers.interceptor";
 
 
 export function initApplication(oauthService: OAuthService) {
@@ -70,6 +71,11 @@ export function initApplication(oauthService: OAuthService) {
     }),
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHeadersInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthRedirectInterceptor,
