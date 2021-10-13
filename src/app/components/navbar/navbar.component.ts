@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {OAuthService} from "angular-oauth2-oidc";
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,8 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   isExpanded = false;
 
+  constructor(private oauthService: OAuthService) {  }
+
   collapse() {
     this.isExpanded = false;
   }
@@ -16,4 +19,19 @@ export class NavbarComponent {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
+
+  public login() {
+    this.oauthService.initLoginFlow();
+  }
+
+  public logoff() {
+    this.oauthService.logOut();
+  }
+
+  /*public get name() {
+    var claims = this.oauthService.getIdentityClaims();
+    let claimss = this.oauthService.
+    if (!claims) return null;
+    return claims.;
+  }*/
 }

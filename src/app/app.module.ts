@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './components/app/app.component';
@@ -9,13 +9,36 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
 import { AuthorsComponent } from './components/authors/authors.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { BookComponent } from './components/book/book.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { FeedAuthorComponent } from './components/feed-author/feed-author.component';
 import { FeedBookComponent } from './components/feed-book/feed-book.component';
 import { BookShortComponent } from './components/book-short/book-short.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import {OAuthModule, OAuthService, OAuthStorage} from "angular-oauth2-oidc";
+import {AuthGuard} from "./AuthGuard";
+import {authConfig} from "./Config/AuthConfig";
+import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
+import {environment} from "../environments/environment";
+import {AuthRedirectInterceptor} from "./ Interceptors/auth.interceptor";
+
+
+export function initApplication(oauthService: OAuthService) {
+  return () => {
+    oauthService.configure(authConfig);
+    oauthService.tokenValidationHandler = new JwksValidationHandler();
+    return oauthService
+      .loadDiscoveryDocumentAndTryLogin()
+      .then(() => {
+        if (oauthService.hasValidAccessToken()) {
+          oauthService.setupAutomaticSilentRefresh();
+        } else {
+          oauthService.initImplicitFlow();
+        }
+      });
+  };
+}
 
 @NgModule({
   declarations: [
@@ -30,15 +53,37 @@ import { BookShortComponent } from './components/book-short/book-short.component
     BooksListComponent,
     FeedAuthorComponent,
     FeedBookComponent,
-    BookShortComponent
+    BookShortComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [
+          environment.clientPortalApiConfig.host
+        ],
+        sendAccessToken: true
+      }
+    }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthRedirectInterceptor,
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApplication,
+      deps: [OAuthService],
+      multi: true
+    },
+    { provide: OAuthStorage, useValue: localStorage },
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

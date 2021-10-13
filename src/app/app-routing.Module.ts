@@ -7,11 +7,12 @@ import {FeedAuthorComponent} from "./components/feed-author/feed-author.componen
 import {AuthorsComponent} from "./components/authors/authors.component";
 import {FeedBookComponent} from "./components/feed-book/feed-book.component";
 import {BookComponent} from "./components/book/book.component";
+import {AuthGuard} from "./AuthGuard";
 
 const routes: Routes = [
   { path: 'books', component: FeedBookComponent },
   { path: 'books/:snippetId', component: BookComponent },
-  { path: 'authors/:authorId', component: FeedAuthorComponent },
+  { path: 'authors/:authorId', component: FeedAuthorComponent, canActivate: [AuthGuard] },
   { path: 'authors/:OrderBy', component: AuthorListComponent },
   { path: 'authors', component: AuthorsComponent },
 
