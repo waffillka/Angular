@@ -8,8 +8,8 @@ import {EnvironmentConfig} from "./environment-config";
 const authentication: AuthConfig = {
   issuer: "https://localhost:44310",
   redirectUri: window.location.origin,
-  clientId: "Bookcrossing",
-  scope: "openid email profile Bookcrossing_api roles",
+  clientId: "ClientApp",
+  scope: "openid email BackEndApp_api profile roles",
   postLogoutRedirectUri: window.location.origin + "/authors",
   requireHttps: false,
   silentRefreshRedirectUri: window.location.origin + "/assets/silent-refresh.html",
