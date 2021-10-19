@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {BookService} from "../../services/book.service";
-import {Book} from "../../models/Book";
+import {BookDetailsService} from "../../services/book-details.service";
+import {BookDetails} from "../../models/Details/BookDetails";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css'],
-  providers: [BookService]
+  providers: [BookDetailsService]
 })
 export class BookComponent implements OnInit {
-  public book: Book | undefined;
+  public book: BookDetails | undefined;
   public bookId: string | undefined;
   public errorMessage: string | undefined;
 
   constructor(
-    private service: BookService,
+    private service: BookDetailsService,
     private route: ActivatedRoute,
     private router: Router,
   ) { }

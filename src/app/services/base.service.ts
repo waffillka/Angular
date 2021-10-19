@@ -2,12 +2,10 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, map, retry} from "rxjs/operators";
-import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 export abstract class BaseService<T> {
   protected path = "anyPath";
   protected url = environment.urlApi;
-
 
   constructor(protected http: HttpClient) { }
 

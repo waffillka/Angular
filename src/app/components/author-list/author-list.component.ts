@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {Author} from "../../models/Author";
 import {HttpParams} from "@angular/common/http";
-import {AuthorService} from "../../services/author.service";
+import {AuthorDetailsService} from "../../services/author-details.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
   selector: 'app-author-list',
   templateUrl: './author-list.component.html',
   styleUrls: ['./author-list.component.css'],
-  providers: [AuthorService]
+  providers: [AuthorDetailsService]
 })
 export class AuthorListComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class AuthorListComponent implements OnInit {
   private httpParams!: HttpParams;
 
   constructor(
-    private service: AuthorService,
+    private service: AuthorDetailsService,
     private route: ActivatedRoute
   ) { }
 

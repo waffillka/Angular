@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorService} from "../../services/author.service";
+import {AuthorDetailsService} from "../../services/author-details.service";
 import {Author} from "../../models/Author";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
@@ -7,7 +7,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
   selector: 'app-feed-author',
   templateUrl: './feed-author.component.html',
   styleUrls: ['./feed-author.component.css'],
-  providers: [AuthorService]
+  providers: [AuthorDetailsService]
 })
 export class FeedAuthorComponent implements OnInit {
   public author: Author | undefined;
@@ -17,7 +17,7 @@ export class FeedAuthorComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: AuthorService
+    private service: AuthorDetailsService
   ) { }
 
   ngOnInit() {

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpParams} from "@angular/common/http";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {Book} from "../../models/Book";
-import {BookService} from "../../services/book.service";
+import {BookDetails} from "../../models/Details/BookDetails";
+import {BookDetailsService} from "../../services/book-details.service";
 
 @Component({
   selector: 'app-books-list',
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.css'],
-  providers: [BookService]
+  providers: [BookDetailsService]
 })
 export class BooksListComponent implements OnInit {
-  public books: Book[] | undefined;
+  public books: BookDetails[] | undefined;
   public errorMessage: string | undefined;
   public loadingState = false;
 
@@ -19,7 +19,7 @@ export class BooksListComponent implements OnInit {
   private httpParams!: HttpParams;
 
   constructor(
-    private service: BookService,
+    private service: BookDetailsService,
     private route: ActivatedRoute
   ) { }
 

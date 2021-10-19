@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
 import {BaseService} from "./base.service";
-import {Book} from "../models/Book";
+import {BookDetails} from "../models/Details/BookDetails";
 import {HttpClient} from "@angular/common/http";
 import {catchError, retry} from "rxjs/operators";
+import {BookLookUp} from "../models/LookUp/BookLookUp";
 
 @Injectable()
-export class BookService extends BaseService<Book> {
+export class BookLookService extends BaseService<BookLookUp> {
   protected path = "api/books";
 
   constructor(http: HttpClient) {
@@ -23,14 +24,14 @@ export class BookService extends BaseService<Book> {
     });
   }
 
-  public create(snippet: any) {
-    return this.http.post<Book>(`${this.url}/${this.path}/create`, snippet).pipe(
+ /* public create(snippet: any) {
+    return this.http.post<BookDetails>(`${this.url}/${this.path}/create`, snippet).pipe(
       catchError(this.HandleError)
     );
   }
 
-  public update(book: Book) {
-    return this.http.put<Book>(`${this.url}/${this.path}/update`, book).pipe(
+  public update(book: BookDetails) {
+    return this.http.put<BookDetails>(`${this.url}/${this.path}/update`, book).pipe(
       catchError(this.HandleError)
     );
   }
@@ -40,6 +41,5 @@ export class BookService extends BaseService<Book> {
       retry(3),
       catchError(this.HandleError)
     );
-  }
-
+  }*/
 }

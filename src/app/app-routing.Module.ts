@@ -7,7 +7,7 @@ import {FeedAuthorComponent} from "./components/feed-author/feed-author.componen
 import {AuthorsComponent} from "./components/authors/authors.component";
 import {FeedBookComponent} from "./components/feed-book/feed-book.component";
 import {BookComponent} from "./components/book/book.component";
-import {AuthGuard} from "./AuthGuard";
+import {AuthGuard} from "./Guards/AuthGuard";
 
 const routes: Routes = [
   { path: 'books', component: FeedBookComponent },

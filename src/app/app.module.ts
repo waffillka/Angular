@@ -17,7 +17,7 @@ import { FeedBookComponent } from './components/feed-book/feed-book.component';
 import { BookShortComponent } from './components/book-short/book-short.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {OAuthModule, OAuthService, OAuthStorage} from "angular-oauth2-oidc";
-import {AuthGuard} from "./AuthGuard";
+import {AuthGuard} from "./Guards/AuthGuard";
 import {authConfig} from "./Config/AuthConfig";
 import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 import {environment} from "../environments/environment";
