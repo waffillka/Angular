@@ -1,32 +1,15 @@
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
-import {catchError, map, retry} from "rxjs/operators";
+import {throwError} from "rxjs";
 
-export abstract class BaseService<T> {
+export abstract class BaseService {
   protected path = "anyPath";
   protected url = environment.urlApi;
 
   constructor(protected http: HttpClient) { }
 
-  public get(id: string): Observable<T> {
-    return this.http.get(`${this.url}/${this.path}/${id}`, { responseType: "text" }).pipe(
-      map(responce => this.getMap(responce)),
-      retry(3),
-      catchError(this.HandleError)
-    );
-  }
-
   protected getMap(responce: string) {
     return JSON.parse(responce);
-  }
-
-  public getMany(queryParams: HttpParams): Observable<T[]> {
-    return this.http.get(`${this.url}/${this.path}/search`, { responseType: "text", params: queryParams }).pipe(
-      map(responce => this.getManyMap(responce)),
-      retry(3),
-      catchError(this.HandleError)
-    );
   }
 
   protected getManyMap(responce: string) {

@@ -4,17 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './components/app/app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {AppRoutingModule} from "./app-routing.Module";
-import { AuthorComponent } from './components/author/author.component';
-import { AuthorListComponent } from './components/author-list/author-list.component';
-import { AuthorsComponent } from './components/authors/authors.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { BookComponent } from './components/book/book.component';
-import { BooksListComponent } from './components/books-list/books-list.component';
-import { FeedAuthorComponent } from './components/feed-author/feed-author.component';
-import { FeedBookComponent } from './components/feed-book/feed-book.component';
-import { BookShortComponent } from './components/book-short/book-short.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {OAuthModule, OAuthService, OAuthStorage} from "angular-oauth2-oidc";
 import {AuthGuard} from "./Guards/AuthGuard";
@@ -23,6 +15,21 @@ import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 import {environment} from "../environments/environment";
 import {AuthRedirectInterceptor} from "./ Interceptors/auth.interceptor";
 import {AuthHeadersInterceptor} from "./ Interceptors/auth.headers.interceptor";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {MatInputModule} from "@angular/material/input";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCardModule} from "@angular/material/card";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AuthorListTableComponent } from './components/author-list-table/author-list-table.component';
 
 
 export function initApplication(oauthService: OAuthService) {
@@ -45,20 +52,14 @@ export function initApplication(oauthService: OAuthService) {
   declarations: [
     AppComponent,
     NavbarComponent,
-    AuthorComponent,
-    AuthorListComponent,
-    AuthorsComponent,
     NotFoundComponent,
     HomeComponent,
-    BookComponent,
-    BooksListComponent,
-    FeedAuthorComponent,
-    FeedBookComponent,
-    BookShortComponent,
-    ProfileComponent
+    ProfileComponent,
+    AuthorListTableComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     OAuthModule.forRoot({
@@ -69,6 +70,19 @@ export function initApplication(oauthService: OAuthService) {
         sendAccessToken: true
       }
     }),
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {

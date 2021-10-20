@@ -28,10 +28,4 @@ export class NavbarComponent {
     this.oauthService.logOut();
   }
 
-  /*public get name() {
-    var claims = this.oauthService.getIdentityClaims();
-    let claimss = this.oauthService.
-    if (!claims) return null;
-    return claims.;
-  }*/
 }
