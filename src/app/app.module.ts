@@ -30,6 +30,13 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AuthorListTableComponent } from './components/author-list-table/author-list-table.component';
+import { AuthorComponent } from './components/author/author.component';
+import { BookListTableComponent } from './components/book-list-table/book-list-table.component';
+import { PublisherListTableComponent } from './components/publisher-list-table/publisher-list-table.component';
+import { PublisherComponent } from './components/publisher/publisher.component';
+import { BookComponent } from './components/book/book.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 export function initApplication(oauthService: OAuthService) {
@@ -55,7 +62,12 @@ export function initApplication(oauthService: OAuthService) {
     NotFoundComponent,
     HomeComponent,
     ProfileComponent,
-    AuthorListTableComponent
+    AuthorListTableComponent,
+    AuthorComponent,
+    BookListTableComponent,
+    PublisherListTableComponent,
+    PublisherComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +94,9 @@ export function initApplication(oauthService: OAuthService) {
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
