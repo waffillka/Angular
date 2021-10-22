@@ -15,9 +15,7 @@ export class BookService extends BaseService {
     super(http);
   }
 
-
-
-  public getById(id: string): Observable<BookDetails> {
+  public getById(id: string | null): Observable<BookDetails> {
     return this.http.get(`${this.url}/${this.path}/${id}`, { responseType: "text" }).pipe(
       map(responce => this.getMap(responce)),
       retry(3),
@@ -50,5 +48,63 @@ export class BookService extends BaseService {
       retry(3),
       catchError(this.HandleError)
     );
+  }
+
+  public getCount(searchString: string, isFree: boolean): Observable<number> {
+    if(searchString == '' || searchString == null) {
+      return this.http.get(`${this.url}/${this.path}/count`, {responseType: "text",
+        params: new HttpParams()
+          .set('SearchString', searchString)
+          .set('IsFree', isFree)
+      }).pipe(
+          map(responce => this.getManyMap(responce)),
+          retry(3),
+          catchError(this.HandleError)
+        );
+    }
+    else {
+      return this.http.get(`${this.url}/${this.path}/count`, {
+        responseType: "text",
+        params: new HttpParams()
+          .set('SearchString', searchString)
+          .set('IsFree', isFree)
+      }).pipe(
+        map(responce => this.getManyMap(responce)),
+        retry(3),
+        catchError(this.HandleError)
+      );
+    }
+  }
+
+  public getManyWithParams(sortOrder: string, pageNumber: number, pageSize: number, searchString: string, isFree: boolean): Observable<BookLookUp[]> {
+    if(searchString == '' || searchString == null) {
+      return this.http.get(`${this.url}/${this.path}/search`, {
+        responseType: "text",
+        params: new HttpParams()
+          .set('PageNumber', pageNumber)
+          .set('OrderBy', sortOrder)
+          .set('PageSize', pageSize)
+          .set('IsFree', isFree)
+      }).pipe(
+        map(responce => this.getManyMap(responce)),
+        retry(3),
+        catchError(this.HandleError)
+      );
+    }
+    else {
+      return this.http.get(`${this.url}/${this.path}/search`, {
+        responseType: "text",
+        params: new HttpParams()
+          .set('PageNumber', pageNumber)
+          .set('OrderBy', sortOrder)
+          .set('PageSize', pageSize)
+          .set('SearchString', searchString)
+          .set('IsFree', isFree)
+      }).pipe(
+        map(responce => this.getManyMap(responce)),
+        retry(3),
+        catchError(this.HandleError)
+      );
+    }
   }
 }
