@@ -3,7 +3,7 @@ import {AuthorLookUp} from "./AuthorLookUp";
 
 export interface BookLookUp {
   id : string;
-  Name : string;
+  name : string;
   description : string;
   publisher : PublisherLookUp;
   authors : AuthorLookUp[];
