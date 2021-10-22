@@ -15,6 +15,7 @@ import {AuthorService} from "../../services/author.service";
 export class AuthorListTableComponent implements AfterViewInit {
   displayedColumns: string[] = [ 'name', 'birthday'];
   data: AuthorLookUp[] = [];
+  filterValue : string = '';
 
   resultsLength = 0;
   isLoadingResults = true;
@@ -26,25 +27,34 @@ export class AuthorListTableComponent implements AfterViewInit {
   constructor(private service: AuthorService) { }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-
-    merge(this.sort.sortChange, this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.service!.getManyWithParams(this.sort.direction, this.paginator.pageIndex + 1, this.paginator.pageSize);
-        }),
-        map(data => {
-          this.isLoadingResults = false;
-          this.isRateLimitReached = data === null;
-
-          if (data === null) {
-            return [];
-          }
-          this.service.getCount().subscribe(result => this.resultsLength = result);
-          return data;
-        })
-      ).subscribe(data => this.data = data);
+    this.table();
   }
+
+  applyFilter(event: Event) {
+    this.filterValue = (event.target as HTMLInputElement).value;
+    this.table();
+  }
+
+   table() {
+     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+     merge(this.sort.sortChange, this.paginator.page)
+       .pipe(
+         startWith({}),
+         switchMap(() => {
+           this.isLoadingResults = true;
+           return this.service!.getManyWithParams(this.sort.direction, this.paginator.pageIndex + 1, this.paginator.pageSize, this.filterValue);
+         }),
+         map(data => {
+           this.isLoadingResults = false;
+           this.isRateLimitReached = data === null;
+
+           if (data === null) {
+             return [];
+           }
+           this.service.getCount(this.filterValue).subscribe(result => this.resultsLength = result);
+           return data;
+         })
+       ).subscribe(data => this.data = data);
+   }
 }
