@@ -1,11 +1,7 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {AuthorDetails} from "../../models/Details/AuthorDetails";
 import {AuthorService} from "../../services/author.service";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {merge} from "rxjs";
-import {catchError, map, startWith, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-author',
@@ -19,9 +15,6 @@ export class AuthorComponent implements OnInit {
   public errorMessage: string | undefined;
 
   displayedColumns: string[] = ['name', 'description', 'publisher'];
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +36,7 @@ export class AuthorComponent implements OnInit {
               this.errorMessage = error;
             });
         } else {
-          //rederect NotFound-------------------------------------------------------------------------------------------
+          this.router.navigate(['/not-found'])
         }
       }
     );
