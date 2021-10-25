@@ -9,15 +9,17 @@ import {BookListTableComponent} from "./components/book-list-table/book-list-tab
 import {BookComponent} from "./components/book/book.component";
 import {PublisherComponent} from "./components/publisher/publisher.component";
 import {PublisherListTableComponent} from "./components/publisher-list-table/publisher-list-table.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'author/:id', component: AuthorComponent },
-  { path: 'authors', component: AuthorListTableComponent, canActivate: [AuthGuard] },
+  { path: 'authors', component: AuthorListTableComponent},// canActivate: [AuthGuard] },
   { path: 'book/:id', component: BookComponent },
-  { path: 'books', component: BookListTableComponent, canActivate: [AuthGuard] },
+  { path: 'books', component: BookListTableComponent},// canActivate: [AuthGuard] },
   { path: 'publisher/:id', component: PublisherComponent },
-  { path: 'publishers', component: PublisherListTableComponent, canActivate: [AuthGuard] },
+  { path: 'publishers', component: PublisherListTableComponent},// canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent},
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent }
 ];
