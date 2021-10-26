@@ -1,1 +1,59 @@
-<p>profile works!</p>
+<div class="offset-lg-2 col-lg-8">
+  <div class="p-2 m-2 bg-white rounded">
+    <div *ngIf="isAuthenticated()">
+      <div *ngIf="isAuthenticated()" class="row mb-3">
+
+        <div class="col-9 col-lg-10 d-flex flex-column">
+          <h3>
+            {{this.jwtTokenService.getNickName()}}
+          </h3>
+          <p>
+            {{this.jwtTokenService.getName()}}
+          </p>
+          <p>
+            {{this.jwtTokenService.getEmail()}}
+          </p>
+          <p>
+            <a href="{{this.jwtTokenService.getProfile()}}">{{this.jwtTokenService.getProfile()}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-outline-danger" (click)="logout()">
+          Выйти
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!this.isAuthenticated()">
+      <div class="d-grid gap-2">
+        <button class="btn btn-success" (click)="login()">
+          Авторизоваться
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isAuthenticated">
+    <!--<div *ngFor="let snippet of shortSnippets">
+      <app-short-snippet [snippet]="snippet"></app-short-snippet>
+    </div>
+    <div *ngIf="errorMessage">
+      <div class="p-2 m-2 bg-white rounded">
+        <p class="text-danger">
+          {{errorMessage}}
+        </p>
+      </div>
+    </div>
+    <div *ngIf="!loadingState && shortSnippets" class="d-flex flex-column align-items-center">
+      <button class="btn btn-outline-dark" (click)="getSnippets()">
+        Загрузить ещё
+      </button>
+    </div>
+    <div *ngIf="loadingState && !errorMessage" class="d-flex flex-column align-items-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>-->
+</div>
+
