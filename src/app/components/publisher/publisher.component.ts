@@ -16,8 +16,6 @@ export class PublisherComponent implements OnInit {
   private publisherId : string | null = "";
   public errorMessage: string | undefined;
 
-  displayedColumns: string[] = ['name', 'description', 'publisher'];
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
