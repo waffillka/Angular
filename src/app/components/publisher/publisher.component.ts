@@ -4,6 +4,8 @@ import {MatSort} from "@angular/material/sort";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {PublisherDetails} from "../../models/Details/PublisherDetails";
 import {PublisherService} from "../../services/publisher.service";
+import {MatTableDataSource} from "@angular/material/table";
+import {BookLookUp} from "../../models/LookUp/BookLookUp";
 
 @Component({
   selector: 'app-publisher',
@@ -15,6 +17,13 @@ export class PublisherComponent implements OnInit {
   data : PublisherDetails | undefined;
   private publisherId : string | null = "";
   public errorMessage: string | undefined;
+
+  displayedColumns: string[] = ['name'];
+  dataSource = new MatTableDataSource<BookLookUp>();
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -33,6 +42,7 @@ export class PublisherComponent implements OnInit {
           this.service.getById(this.publisherId).subscribe(
             responce => {
               this.data = responce;
+              this.dataSource = new MatTableDataSource<BookLookUp>(this.data.books);
               console.log(responce);
               console.log(this.publisherId);
             },
