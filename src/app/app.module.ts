@@ -37,7 +37,7 @@ import { PublisherComponent } from './components/publisher/publisher.component';
 import { BookComponent } from './components/book/book.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ReactiveFormsModule} from "@angular/forms";
-import {JwtHelperService} from "@auth0/angular-jwt";
+import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 
 
 export function initApplication(oauthService: OAuthService) {
@@ -118,6 +118,9 @@ export function initApplication(oauthService: OAuthService) {
     },
     { provide: OAuthStorage, useValue: localStorage },
     AuthGuard,
+    { provide: JWT_OPTIONS,
+      useValue: JWT_OPTIONS
+    },
     JwtHelperService
   ],
   bootstrap: [AppComponent]

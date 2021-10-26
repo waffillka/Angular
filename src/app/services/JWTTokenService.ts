@@ -5,7 +5,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 @Injectable()
 export class JWTTokenService {
   decodedToken: { [key: string]: string; } | undefined;
-  tokenPayload : string | undefined;
+
   constructor(public authService: OAuthService,
               private jwtHelper :JwtHelperService)
   { }
