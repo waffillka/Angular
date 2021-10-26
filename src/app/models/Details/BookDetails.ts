@@ -3,9 +3,9 @@ import { PublisherLookUp } from "../LookUp/PublisherLookUp";
 import {User} from "../User";
 
 export interface BookDetails {
-    Name : string;
+    name : string;
     description : string;
-    ISBIN : string;
+    isbin : string;
     publisherId : string;
     publisher : PublisherLookUp;
     ownerId : string;
