@@ -1,4 +1,4 @@
-import {CanActivate, Router} from "@angular/router";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import {OAuthService} from "angular-oauth2-oidc";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
@@ -8,14 +8,20 @@ export class AuthGuard implements CanActivate{
 
   constructor(private oauthService: OAuthService, public router: Router) {}
 
-  canActivate() : Observable<boolean> | boolean{
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean{
+    if (this.oauthService.hasValidAccessToken()) {
+      console.log(this.oauthService.getIdentityClaims());
+      return true;
+    }
 
-    if (this.oauthService.getIdentityClaims() == null)
+    this.router.navigate(['']);
+    return false;
+    /*if (this.oauthService.getIdentityClaims() == null)
     {
       this.oauthService.initLoginFlow();
       return false
     }
 
-    return true;
+    return true;*/
   }
 }
