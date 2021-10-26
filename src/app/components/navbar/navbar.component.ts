@@ -20,6 +20,10 @@ export class NavbarComponent {
     this.isExpanded = !this.isExpanded;
   }
 
+  isAuthenticated(): boolean {
+    return this.oauthService.hasValidAccessToken();
+  }
+
   public login() {
     this.oauthService.initLoginFlow();
   }
