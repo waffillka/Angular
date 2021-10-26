@@ -37,6 +37,7 @@ export class BookComponent implements OnInit {
               this.data = responce;
               console.log(responce);
               console.log(this.bookId);
+              console.log(responce.name);
             },
             error => {
               this.errorMessage = error;

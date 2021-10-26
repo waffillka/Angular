@@ -15,7 +15,7 @@ import {BookLookUp} from "../../models/LookUp/BookLookUp";
   providers: [BookService]
 })
 export class BookListTableComponent implements AfterViewInit {
-  displayedColumns: string[] = [ 'name', 'birthday'];
+  displayedColumns: string[] = [ 'name'];
   data: BookLookUp[] = [];
   filterValue : string = '';
   toppings: FormGroup;

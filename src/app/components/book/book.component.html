@@ -1,1 +1,14 @@
-
+<mat-card class="example-card">
+  <mat-card-title-group>
+    <mat-card-title>{{data!.name}}</mat-card-title>
+   <mat-card-subtitle [routerLink]="['/publisher', data!.publisher.id]">{{data!.publisher.name}}</mat-card-subtitle>
+   <mat-card-subtitle>{{data!.isbin}}</mat-card-subtitle>
+   <mat-card-subtitle>{{data!.owner.nickname}} {{data!.owner.email}}</mat-card-subtitle>
+   <mat-card-subtitle *ngIf="data!.publisher != null">Publisher: {{data!.publisher.name}}</mat-card-subtitle>
+   <mat-card-subtitle *ngIf="data!.recipient != null">{{data!.recipient.nickname}} {{data!.recipient.email}}</mat-card-subtitle>
+   <mat-card-subtitle *ngFor="let item of data!.authors;" [routerLink]="['/author', item.id]">{{item.name}}</mat-card-subtitle>
+ </mat-card-title-group>
+ <mat-card-content>
+   {{data!.description}}
+ </mat-card-content>
+</mat-card>
