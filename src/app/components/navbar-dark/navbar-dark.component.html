@@ -1,0 +1,37 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/home" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-tree-fill" viewBox="0 0 16 16">
+          <path d="M8.416.223a.5.5 0 0 0-.832 0l-3 4.5A.5.5 0 0 0 5 5.5h.098L3.076 8.735A.5.5 0 0 0 3.5 9.5h.191l-1.638 3.276a.5.5 0 0 0 .447.724H7V16h2v-2.5h4.5a.5.5 0 0 0 .447-.724L12.31 9.5h.191a.5.5 0 0 0 .424-.765L10.902 5.5H11a.5.5 0 0 0 .416-.777l-3-4.5z"/>
+        </svg>
+      </a>
+
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/home" class="nav-link px-2 text-secondary">Home</a></li>
+        <li><a href="/authors" class="nav-link px-2 text-white">Authors</a></li>
+        <li><a href="/books" class="nav-link px-2 text-white">Books</a></li>
+        <li><a href="/publishers" class="nav-link px-2 text-white">Publishers</a></li>
+        <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
+      </ul>
+
+      <!--<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+      </form>-->
+      <div *ngIf="!isAuthenticated()">
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <button type="button" class="btn btn-warning">Sign-up</button>
+        </div>
+      </div>
+
+      <div *ngIf="isAuthenticated()">
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Login--</button>
+          <button type="button" class="btn btn-outline-light me-2" routerLink="/profile">Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
