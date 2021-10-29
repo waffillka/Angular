@@ -1,4 +1,4 @@
-import {User} from "../User";
+import {UserLookUp} from "../LookUp/UserLookUp";
 
 export interface BookCreation {
   Name : string;
@@ -6,6 +6,6 @@ export interface BookCreation {
   ISBIN : string;
   publisherId : string;
   ownerId : string;
-  owner : User;
+  owner : UserLookUp;
   recipientId? : string;
 }

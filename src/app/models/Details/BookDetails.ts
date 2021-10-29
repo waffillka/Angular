@@ -1,6 +1,6 @@
 import { AuthorLookUp } from "../LookUp/AuthorLookUp";
 import { PublisherLookUp } from "../LookUp/PublisherLookUp";
-import {User} from "../User";
+import {UserLookUp} from "../LookUp/UserLookUp";
 
 export interface BookDetails {
     name : string;
@@ -9,8 +9,8 @@ export interface BookDetails {
     publisherId : string;
     publisher : PublisherLookUp;
     ownerId : string;
-    owner : User;
+    owner : UserLookUp;
     recipientId : string;
-    recipient : User;
+    recipient : UserLookUp;
     authors : AuthorLookUp[];
 }
