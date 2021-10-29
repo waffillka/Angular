@@ -28,7 +28,7 @@
 
       <div *ngIf="isAuthenticated()">
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login--</button>
+          <button type="button" class="btn btn-outline-light me-2" (click)="logOut()">LogOut</button>
           <button type="button" class="btn btn-outline-light me-2" routerLink="/profile">Profile</button>
         </div>
       </div>

@@ -27,7 +27,7 @@ export class NavbarDarkComponent {
     this.oauthService.initLoginFlow();
   }
 
-  public logoff() {
+  public logOut() {
     this.oauthService.logOut();
   }
 }
