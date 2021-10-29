@@ -38,6 +38,15 @@ import { BookComponent } from './components/book/book.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ReactiveFormsModule} from "@angular/forms";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
+import { NavbarDarkComponent } from './components/navbar-dark/navbar-dark.component';
+import { AboutComponent } from './components/about/about.component';
+import { UserComponent } from './components/user/user.component';
+import { EditAuthorComponent } from './components/edit-author/edit-author.component';
+import { EditBookComponent } from './components/edit-book/edit-book.component';
+import { EditPublisherComponent } from './components/edit-publisher/edit-publisher.component';
+import {AdminGuard} from "./Guards/rightsGuards/AdminGuard";
+import {JWTTokenService} from "./services/JWTTokenService";
+import {ManagerGuard} from "./Guards/rightsGuards/ManagerGuard";
 
 
 export function initApplication(oauthService: OAuthService) {
@@ -68,7 +77,13 @@ export function initApplication(oauthService: OAuthService) {
     BookListTableComponent,
     PublisherListTableComponent,
     PublisherComponent,
-    BookComponent
+    BookComponent,
+    NavbarDarkComponent,
+    AboutComponent,
+    UserComponent,
+    EditAuthorComponent,
+    EditBookComponent,
+    EditPublisherComponent
   ],
   imports: [
     BrowserModule,
@@ -118,10 +133,13 @@ export function initApplication(oauthService: OAuthService) {
     },
     { provide: OAuthStorage, useValue: localStorage },
     AuthGuard,
+    AdminGuard,
+    ManagerGuard,
     { provide: JWT_OPTIONS,
       useValue: JWT_OPTIONS
     },
-    JwtHelperService
+    JwtHelperService,
+    JWTTokenService
   ],
   bootstrap: [AppComponent]
 })

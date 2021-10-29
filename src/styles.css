@@ -7,9 +7,14 @@
   transition: ease-in-out 0.15s;
 }
 
+.text-color {
+  color: rgb(248, 249, 250);
+  vertical-align: middle;
+}
+
 .text {
   font-weight: 400;
-  color: rgb(87, 87, 87);
+  color: rgb(248, 249, 250);
 }
 
 .clickable {
