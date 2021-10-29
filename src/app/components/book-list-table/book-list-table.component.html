@@ -7,29 +7,36 @@
     </div>
   </div>
 
-  <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-  </mat-form-field>
+  <div class="input-group ">
+    <span class="input-group-text">Search</span>
+    <input matInput type="text" aria-label="Search string" class="form-control" (keyup)="applyFilter($event)" placeholder="Search string" #input>
+  </div>
 
-  <section class="example-section" [formGroup]="toppings">
-    <p><mat-checkbox (change)="applyCheckbox()" formControlName="isFree">Free books</mat-checkbox></p>
+  <section class="" [formGroup]="toppings">
+    <p><mat-checkbox class="btn btn-dark btn-outline-secondary" (change)="applyCheckbox()" formControlName="isFree">Free books</mat-checkbox></p>
   </section>
 
   <div class="example-table-container">
-    <table mat-table [dataSource]="data" class="example-table"
+    <table mat-table [dataSource]="data" class="table table-dark table-striped"
            matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
           Name
         </th>
-        <td mat-cell *matCellDef="let row">
-            <mat-card class="example-card" [routerLink]="['/book', row.id]">
+        <td mat-cell *matCellDef="let row" class="table-dark">
+            <mat-card class="text-color" [routerLink]="['/book', row.id]">
               <mat-card-title-group>
-                <mat-card-title>{{row.name}}</mat-card-title>
-                <mat-card-subtitle [routerLink]="['/publisher', row.publisher.id]">{{row.publisher.name}}</mat-card-subtitle>
-                <mat-card-subtitle *ngFor="let item of row.authors;" [routerLink]="['/author', item.id]">{{item.name}}</mat-card-subtitle>
+                <mat-card-title>
+                  <h4><b>{{row.name}}</b></h4>
+                </mat-card-title>
+                <mat-card-subtitle [routerLink]="['/publisher', row.publisher.id]">
+                  <h6>Publisher: {{row.publisher.name}}</h6>
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="row!.authors.length != 0">
+                  Authors: <div *ngFor="let item of row.authors;" [routerLink]="['/author', item.id]">{{item.name}}</div>
+                </mat-card-subtitle>
+
               </mat-card-title-group>
               <mat-card-content>
                 {{row.description}}
@@ -43,5 +50,5 @@
     </table>
   </div>
 
-  <mat-paginator [length]="resultsLength" [pageSize]="20" aria-label="Select page of GitHub search results"></mat-paginator>
+  <mat-paginator class="table-dark pagination" [length]="resultsLength" [pageSize]="20" aria-label="Select page of GitHub search results"></mat-paginator>
 </div>
