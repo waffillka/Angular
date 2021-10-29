@@ -16,12 +16,5 @@ export class AuthGuard implements CanActivate{
 
     this.router.navigate(['']);
     return false;
-    /*if (this.oauthService.getIdentityClaims() == null)
-    {
-      this.oauthService.initLoginFlow();
-      return false
-    }
-
-    return true;*/
   }
 }
