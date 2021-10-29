@@ -1,0 +1,92 @@
+<div class="card-">
+  <div class="card-body bg-dark">
+    <mat-card class="text-color">
+      <mat-card-title-group>
+        <mat-card-title>{{data!.nickname || "-"}}</mat-card-title>
+        <mat-card-subtitle>{{data!.email || "-"}}</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+        <div *ngIf="data!.ownerBook.length != 0">
+          <div>
+            Owner's Books
+          </div>
+          <table mat-table [dataSource]="data!.ownerBook" class="table table-dark table-striped">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element" [routerLink]="['/book', element.id]"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="authors">
+              <th mat-header-cell *matHeaderCellDef> Authors </th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngFor="let item of element!.authors;" [routerLink]="['/author', item.id]">{{item.name}}</div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="publisher">
+              <th mat-header-cell *matHeaderCellDef> Publisher </th>
+              <td mat-cell *matCellDef="let element" [routerLink]="['/publisher', element.publisher.id]"> {{element.publisher.name}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+
+        <div *ngIf="data!.bookRecipient.length != 0">
+          <div>
+            Recipient's Books
+          </div>
+          <table mat-table [dataSource]="data!.bookRecipient" class="table table-dark table-striped">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element" [routerLink]="['/book', element.id]"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="authors">
+              <th mat-header-cell *matHeaderCellDef> Authors </th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngFor="let item of element!.authors;" [routerLink]="['/author', item.id]">{{item.name}}</div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="publisher">
+              <th mat-header-cell *matHeaderCellDef> Publisher </th>
+              <td mat-cell *matCellDef="let element" [routerLink]="['/publisher', element.publisher.id]"> {{element.publisher.name}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+
+        <div *ngIf="data!.subscribe.length != 0">
+          <div>
+            sub's Books
+          </div>
+          <table mat-table [dataSource]="data!.subscribe" class="table table-dark table-striped">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element" [routerLink]="['/book', element.id]"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="authors">
+              <th mat-header-cell *matHeaderCellDef> Authors </th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngFor="let item of element!.authors;" [routerLink]="['/author', item.id]">{{item.name}}</div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="publisher">
+              <th mat-header-cell *matHeaderCellDef> Publisher </th>
+              <td mat-cell *matCellDef="let element" [routerLink]="['/publisher', element.publisher.id]"> {{element.publisher.name}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
