@@ -36,7 +36,7 @@ import { PublisherListTableComponent } from './components/publisher-list-table/p
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { BookComponent } from './components/book/book.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 import { NavbarDarkComponent } from './components/navbar-dark/navbar-dark.component';
 import { AboutComponent } from './components/about/about.component';
@@ -47,6 +47,11 @@ import { EditPublisherComponent } from './components/edit-publisher/edit-publish
 import {AdminGuard} from "./Guards/rightsGuards/AdminGuard";
 import {JWTTokenService} from "./services/JWTTokenService";
 import {ManagerGuard} from "./Guards/rightsGuards/ManagerGuard";
+import { AuthorDialogComponent } from './components/author-dialog/author-dialog.component';
+import { PublisherDialogComponent } from './components/publisher-dialog/publisher-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {DateAdapter, MatCommonModule, MatNativeDateModule} from "@angular/material/core";
 
 
 export function initApplication(oauthService: OAuthService) {
@@ -64,6 +69,8 @@ export function initApplication(oauthService: OAuthService) {
       });
   };
 }
+
+let MatMomentDateModule;
 
 @NgModule({
   declarations: [
@@ -83,37 +90,49 @@ export function initApplication(oauthService: OAuthService) {
     UserComponent,
     EditAuthorComponent,
     EditBookComponent,
-    EditPublisherComponent
+    EditPublisherComponent,
+    AuthorDialogComponent,
+    PublisherDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    OAuthModule.forRoot({
-      resourceServer: {
-        allowedUrls: [
-          environment.clientPortalApiConfig.host
-        ],
-        sendAccessToken: true
-      }
-    }),
-    MatMenuModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatTabsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatCheckboxModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        OAuthModule.forRoot({
+            resourceServer: {
+                allowedUrls: [
+                    environment.clientPortalApiConfig.host
+                ],
+                sendAccessToken: true
+            }
+        }),
+        MatMenuModule,
+        MatButtonModule,
+        MatIconModule,
+        MatNativeDateModule,
+      //MatMomentDateModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatCommonModule,
+        MatCardModule,
+        MatTabsModule,
+        MatSidenavModule,
+        MatListModule,
+        MatDialogModule,
+        MatToolbarModule,
+        MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatProgressSpinnerModule,
+        MatCheckboxModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatDatepickerModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
