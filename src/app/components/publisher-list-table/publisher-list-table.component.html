@@ -17,7 +17,7 @@
            matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear class="text-color">
           Name
         </th>
         <td mat-cell class="table-dark text-color" *matCellDef="let row" [routerLink]="['/publisher', row.id]">{{row.name}}</td>
@@ -28,5 +28,5 @@
     </table>
   </div>
 
-  <mat-paginator class="pagination text-color" [length]="resultsLength" [pageSize]="20" aria-label="Select page of GitHub search results"></mat-paginator>
+  <mat-paginator class="pagination table-dark bg-dark" [length]="resultsLength" [pageSize]="20" aria-label="Select page of GitHub search results"></mat-paginator>
 </div>

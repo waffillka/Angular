@@ -1,8 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {AuthorLookUp} from "../../models/LookUp/AuthorLookUp";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {AuthorService} from "../../services/author.service";
 import {merge} from "rxjs";
 import {map, startWith, switchMap} from "rxjs/operators";
 import {PublisherLookUp} from "../../models/LookUp/PublisherLookUp";

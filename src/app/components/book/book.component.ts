@@ -35,7 +35,7 @@ export class BookComponent implements OnInit {
           this.service.getById(this.bookId).subscribe(
             responce => {
               this.data = responce;
-              console.log(responce);
+              //console.log(responce);
               console.log(this.bookId);
               console.log(responce.name);
             },

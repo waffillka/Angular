@@ -1,18 +1,22 @@
-<div class="card-">
+<div class="bg-black">
   <div class="card-body bg-dark">
-    <mat-card class="text-color">
-      <mat-card-title-group>
+    <mat-card class="bg-dark">
+      <mat-card-title-group class="text-color">
         <mat-card-title>{{data!.name}}</mat-card-title>
-        <mat-card-subtitle [routerLink]="['/publisher', data!.publisher.id]">Publisher: {{data!.publisher.name}}</mat-card-subtitle>
-        <mat-card-subtitle>ISBIN: {{data!.isbin}}</mat-card-subtitle>
-        <mat-card-subtitle [routerLink]="['/user', data!.owner.id]">Owner: {{data!.owner.nickname}} {{data!.owner.email}}</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="data!.publisher != null">Publisher: {{data!.publisher.name}}</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="data!.recipient != null"  [routerLink]="['/user', data!.recipient.id]">Recipient: {{data!.recipient.nickname}} {{data!.recipient.email}}</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="data!.authors.length != 0">
-          Authors: <div *ngFor="let item of data!.authors;" [routerLink]="['/author', item.id]">{{item.name}}</div>
+        <mat-card-subtitle [routerLink]="['/publisher', data!.publisher.id]" class="text-color">Publisher: {{data!.publisher.name}}</mat-card-subtitle>
+        <mat-card-subtitle class="text-color">ISBIN: {{data!.isbin}}</mat-card-subtitle>
+        <mat-card-subtitle [routerLink]="['/user', data!.owner.id]" class="text-color">Owner: {{data!.owner.nickname}} {{data!.owner.email}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="data!.publisher != null" class="text-color" [routerLink]="['/publisher', data!.publisher.id]" >
+          Publisher: {{data!.publisher.name}}
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="data!.recipient != null"  [routerLink]="['/user', data!.recipient.id]" class="text-color">
+          Recipient: {{data!.recipient.nickname}} {{data!.recipient.email}}
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="data!.authors.length != 0" class="text-color">
+          Authors: <div *ngFor="let item of data!.authors;" [routerLink]="['/author', item.id]">{{item.name}} ССЫЛКА НЕ РАБОТАЕТ ХЗ  ПОЧЕМУ</div>
         </mat-card-subtitle>
      </mat-card-title-group>
-     <mat-card-content>
+     <mat-card-content class="text-color">
        {{data!.description}}
      </mat-card-content>
     </mat-card>
