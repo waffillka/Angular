@@ -11,8 +11,8 @@ export class AuthHeadersInterceptor implements HttpInterceptor {
     req = req.clone({
       setHeaders: {
         //'Connection' : 'keep-alive',
-        //'Content-Type' : 'application/json; charset=utf-8',
-        //'Accept'       : 'application/json',
+        'Content-Type' : 'application/json',
+        'Cache-Control': 'no-cache',
         'Authorization': `Bearer ${this.authService.getAccessToken()}`,
 
       },

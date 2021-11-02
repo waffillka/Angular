@@ -52,6 +52,8 @@ import { PublisherDialogComponent } from './components/publisher-dialog/publishe
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {DateAdapter, MatCommonModule, MatNativeDateModule} from "@angular/material/core";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 
 export function initApplication(oauthService: OAuthService) {
@@ -111,7 +113,7 @@ let MatMomentDateModule;
         MatButtonModule,
         MatIconModule,
         MatNativeDateModule,
-      //MatMomentDateModule,
+        //MatMomentDateModule,
         MatButtonModule,
         MatMenuModule,
         MatToolbarModule,
@@ -131,7 +133,9 @@ let MatMomentDateModule;
         MatCheckboxModule,
         ReactiveFormsModule,
         FormsModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatBottomSheetModule,
+        MatButtonToggleModule
     ],
   providers: [
     {

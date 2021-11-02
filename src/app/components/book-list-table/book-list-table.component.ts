@@ -6,12 +6,13 @@ import {map, startWith, switchMap} from "rxjs/operators";
 import {BookService} from "../../services/book.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {BookLookUp} from "../../models/LookUp/BookLookUp";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-book-list-table',
   templateUrl: './book-list-table.component.html',
   styleUrls: ['./book-list-table.component.css'],
-  providers: [BookService]
+  providers: [BookService, UserService]
 })
 export class BookListTableComponent implements AfterViewInit {
   displayedColumns: string[] = [ 'name'];
@@ -26,7 +27,8 @@ export class BookListTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private service: BookService, fb: FormBuilder) {
+  constructor(private bookService: BookService,
+              fb: FormBuilder) {
     this.toppings = fb.group({ isFree: false });
   }
 
@@ -51,7 +53,7 @@ export class BookListTableComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.service!.getManyWithParams(this.sort.direction, this.paginator.pageIndex + 1, this.paginator.pageSize, this.filterValue, this.toppings.value.isFree);
+          return this.bookService!.getManyWithParams(this.sort.direction, this.paginator.pageIndex + 1, this.paginator.pageSize, this.filterValue, this.toppings.value.isFree);
         }),
         map(data => {
           this.isLoadingResults = false;
@@ -60,7 +62,7 @@ export class BookListTableComponent implements AfterViewInit {
           if (data === null) {
             return [];
           }
-          this.service.getCount(this.filterValue, this.toppings.value.isFree).subscribe(result => this.resultsLength = result);
+          this.bookService.getCount(this.filterValue, this.toppings.value.isFree).subscribe(result => this.resultsLength = result);
           return data;
         })
       ).subscribe(data => this.data = data);

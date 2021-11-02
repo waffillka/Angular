@@ -50,5 +50,9 @@
     </table>
   </div>
 
-  <mat-paginator class="pagination table-dark bg-dark" [length]="resultsLength" [pageSize]="20" aria-label="Select page of GitHub search results"></mat-paginator>
+  <mat-paginator class="pagination table-dark bg-dark text-color" [pageSizeOptions]="[1, 5, 10, 20]"
+                 showFirstLastButtons
+                 [length]="resultsLength"
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
 </div>

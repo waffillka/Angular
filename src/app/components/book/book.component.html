@@ -19,6 +19,18 @@
      <mat-card-content class="text-color">
        {{data!.description}}
      </mat-card-content>
+      <mat-button-toggle-group>
+        <div class="g-grid gap-3 mat-button">
+          <button class="btn btn-outline-light" (click)="this.subscribe()">
+            buttom sub
+          </button>
+        </div>
+        <div class="g-grid gap-2 mat-button">
+          <button class="btn btn-outline-light" (click)="this.unsubscribe()">
+            buttom unsub
+          </button>
+        </div>
+      </mat-button-toggle-group>
     </mat-card>
   </div>
 </div>

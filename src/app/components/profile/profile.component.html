@@ -112,7 +112,7 @@
 
       <div *ngIf="data!.subscribe.length != 0">
         <div>
-          Recipient's Books
+          Sub's Books
         </div>
         <table mat-table [dataSource]="data!.subscribe" class="table table-dark table-striped">
           <ng-container matColumnDef="name">
@@ -137,7 +137,7 @@
             <td mat-cell *matCellDef="let element" [routerLink]="['/publisher', element.publisher.id]" class="text-color">
               <div class="d-grid gap-2">
                 <button class="btn btn-outline-light" >
-                  Выйти
+                  buttom
                 </button>
               </div>
             </td>

@@ -24,7 +24,7 @@ export class UserService extends BaseService {
     });
   }
 
-  public getById(id: string | null): Observable<UserDetails> {
+  public getById(id: any): Observable<UserDetails> {
     return this.http.get(`${this.url}/${this.path}/${id}`, { responseType: "text" }).pipe(
       map(responce => this.getMap(responce)),
       retry(3),
@@ -32,11 +32,21 @@ export class UserService extends BaseService {
     );
   }
 
-  public getByAuthId(id: string | null): Observable<UserDetails> {
+  public getByAuthId(id: any): Observable<UserDetails> {
     return this.http.get(`${this.url}/${this.path}/authId/${id}`, { responseType: "text" }).pipe(
       map(responce => this.getMap(responce)),
       retry(3),
       catchError(this.HandleError)
     );
+  }
+
+  public subscribe(bookId: any): Observable<string> {
+    return this.http.post<any>(`${this.url}/${this.path}/subscribe?bookId=${bookId}`, null).pipe(
+      catchError(this.HandleError));
+  }
+
+  public unsubscribe(bookId: any): Observable<string> {
+    return this.http.post<any>(`${this.url}/${this.path}/unsubscribe`, {bookId : bookId}).pipe(
+      catchError(this.HandleError));
   }
 }
