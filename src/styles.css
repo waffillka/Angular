@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.link {
+  font-weight: 500;
+  color: rgb(87, 87, 87);
+  text-decoration: none;
+  border-bottom: solid 2px rgb(255, 255, 255);
+  transition-property: all;
+  transition: ease-in-out 0.15s;
+}
+
+.text-color {
+  color: rgb(248, 249, 250);
+  vertical-align: middle;
+}
+
+.text {
+  font-weight: 400;
+  color: rgb(248, 249, 250);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.link_active {
+  color: #BA0DFB;
+}
+
+.link-nav {
+  color: #A8A8A8;
+}
+
+.link-nav_active {
+  color: #BA0DFB;
+  border-bottom: solid 2px #BA0DFB;
+}
+
+.link:hover {
+  color: #BA0DFB;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
